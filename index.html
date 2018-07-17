@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kurs BitCoin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- FontAwesome cdn style -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&amp;subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:500,700&amp;subset=latin-ext" rel="stylesheet">
+
+    <!-- Main styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="bitcoin-app">
+            <div class="header">
+                <div class="header__wrapper">
+                    <div class="header__select">
+                        <select id="js-select">
+                            <option value="5">5 sek</option>
+                            <option value="10">10 sek</option>
+                            <option value="30">30 sek</option>
+                            <option value="60">1 min</option>
+                            <option value="300">5 min</option>
+                        </select>
+                    </div>
+                    <div class="header__btn js-live live-active">live</div>
+                </div>
+            </div>
+
+
+            <div class="exchange-box">
+                <div class="price-box">
+                    <h3 class="price-box__header">Kupno</h3>
+                    <p><span class="price-box__span js-buy-price"></span>PLN</p>
+                    <div class="percent-item js-buy-percent"></div>
+                </div>
+            </div>
+
+
+            <div class="exchange-box">
+                <div class="price-box">
+                    <h3 class="price-box__header">Sprzedaż</h3>
+                    <p><span class="price-box__span js-sell-price"></span>PLN</p>
+                    <div class="percent-item js-sell-percent"></div>
+                </div>
+            </div>
+
+            <div class="timer js-timer">22:40 / 1.01.2018</div>
+        </div>
+    </div>
+
+    <!-- jQuery script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Main scripts -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

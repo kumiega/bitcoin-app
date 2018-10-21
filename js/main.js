@@ -1,5 +1,4 @@
 $(function () {
-
     const buyPriceContainer = $('.js-buy-price');
     const sellPriceContainer = $('.js-sell-price');
     const buyPercent = $('.js-buy-percent');
@@ -7,12 +6,10 @@ $(function () {
     const liveButton = $('.js-live');
 
     function getExchangeData() {
-
         let currentBuyPrice = parseFloat(buyPriceContainer.html());
         let currentSellPrice = parseFloat(sellPriceContainer.html());
 
         $.getJSON('https://blockchain.info/pl/ticker', function (data) {
-
             let buyNewPrice = data.PLN.buy.toFixed(3);
             let sellNewPrice = data.PLN.sell.toFixed(3);
 
@@ -23,35 +20,21 @@ $(function () {
             let roundedPercentSell = ((sellNewPrice - currentSellPrice) / sellNewPrice * 100).toFixed(2) + '%';
 
             if (currentBuyPrice < parseFloat(buyNewPrice)) {
-
                 buyPercent.removeClass().addClass('percent-item percent-up').html(roundedPercentBuy);
-
             } else if (currentBuyPrice > parseFloat(buyNewPrice)) {
-
                 buyPercent.removeClass().addClass('percent-item percent-down').html(roundedPercentBuy);
             } else {
-
                 buyPercent.removeClass().addClass('percent-item').html('=');
-
             }
-
 
             if (currentSellPrice < parseFloat(sellNewPrice)) {
-
                 sellPercent.removeClass().addClass('percent-item percent-up').html(roundedPercentSell);
-
             } else if (currentSellPrice > parseFloat(sellNewPrice)) {
-
                 sellPercent.removeClass().addClass('percent-item percent-down').html(roundedPercentSell);
-
             } else {
-
                 sellPercent.removeClass().addClass('percent-item').html('=');
-
             }
-
         });
-
     }
 
     getExchangeData();
@@ -64,28 +47,22 @@ $(function () {
     liveButton.click(function () {
 
         if (liveButton.hasClass('live-disabled')) {
-
             clearInterval(interval);
             interval = setInterval(getExchangeData, 1000);
             liveButton.addClass('live-active').removeClass('live-disabled');
-
         } else {
-
-            const select = document.getElementById('js-select');
+            const select = $('#js-select');
             let selectValue = select.options[select.selectedIndex].value;
             let refreshing = selectValue * 1000;
 
             liveButton.removeClass('live-active').addClass('live-disabled');
             clearInterval(interval);
             interval = setInterval(getExchangeData, refreshing);
-            console.log(refreshing / 1000 + 's after');
-
         }
 
     });
 
     $('.header__select').click(function () {
-
         const select = document.getElementById('js-select');
         let selectValue = select.options[select.selectedIndex].value;
         let refreshing = selectValue * 1000;
@@ -93,12 +70,9 @@ $(function () {
         liveButton.removeClass('live-active').addClass('live-disabled');
         clearInterval(interval);
         interval = setInterval(getExchangeData, refreshing);
-        console.log(refreshing / 1000 + 's after');
-
     });
 
     function timer() {
-
         let timer = new Date();
 
         let day = timer.getDate();
@@ -116,10 +90,8 @@ $(function () {
 
 
         $('.js-timer').html(hours + ':' + minutes + ':' + seconds + ' / ' + day + '.' + month + '.' + year);
-
     }
 
     let timerInterval = setInterval(timer, 1000);
     timer();
-
 });
